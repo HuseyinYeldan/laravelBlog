@@ -32,6 +32,7 @@
 }
 .content p{
     line-height: 1.5;
+    margin-bottom: 10px;
 }
 .content .blog-image{
     border-radius: 5px;

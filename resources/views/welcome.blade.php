@@ -12,26 +12,14 @@
 </head>
 <body>
     <div class="container">
+        <?php foreach($blogs as $blog):?>
         <article class="content">
-            <h1 class="title">First Blog</h1>
-            <img src="https://picsum.photos/800/300" class="blog-image" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, quas!</p>
-            <a href="/blog/first-blog">Read More</a>
+            <h1 class="title"><?= $blog->title; ?></h1>
+            <img src="<?=$blog->image?>" alt="">
+            <p><?=$blog->excerpt?></p>
+            <a href="/blog/<?=$blog->slug?>">Read More</a>
         </article>
-
-        <article class="content">
-            <h1 class="title">Second Blog</h1>
-            <img src="https://picsum.photos/800/300" class="blog-image" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, quas!</p>
-            <a href="/blog/second-blog">Read More</a>
-        </article>
-
-        <article class="content">
-            <h1 class="title">Third Blog</h1>
-            <img src="https://picsum.photos/800/300" class="blog-image" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, quas!</p>
-            <a href="/blog/third-blog">Read More</a>
-        </article>
+        <?php endforeach;?>
     </div>
 
 </body>
