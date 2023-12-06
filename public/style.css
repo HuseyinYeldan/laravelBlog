@@ -1,0 +1,39 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+.title{
+    text-align: center;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-block: 100px;
+}
+.content{
+    max-width: 800px;
+    text-align: justify;
+}
+/* This targets what comes after the .content */
+.content + .content{
+    border-top: 1px solid #808080;
+    margin-block: 50px;
+    padding-block: 50px;
+}
+.content .title{
+    font-size: 36pt;
+    margin-block: 10px;
+}
+.content p{
+    line-height: 1.5;
+}
+.content .blog-image{
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
