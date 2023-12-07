@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/blogs', function () {
     //return the files to view
-    return view('welcome',['blogs' => Blog::all()]);
+    return view('welcome',['blogs' => Blog::with('category')->get()]);
 });
 
 // Route belirle ve slug ata.
