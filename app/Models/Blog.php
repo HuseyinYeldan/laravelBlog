@@ -47,6 +47,16 @@ class Blog extends Model
 
     public static function find($slug)
     {
-        return static::allBlogs()->firstWhere('slug',$slug);
+        $blogs = static::allBlogs()->firstWhere('slug',$slug);
+
+        return $blogs;
+    }
+
+    public static function findOrFail($slug){
+        $blogs = static::find($slug);
+        if(!$blogs){
+            throw new ModelNotFoundException;
+        }
+        return $blogs;
     }
 }

@@ -22,7 +22,7 @@ Route::get('/blogs', function () {
 // Route belirle ve slug ata.
 Route::get('/blog/{slug}', function($slug){
     return view('blog',[
-        'blog' => Blog::find($slug)
+        'blog' => Blog::findOrFail($slug)
     ]);
 
-})->where('blog','[A-z_\-]+');
+});
