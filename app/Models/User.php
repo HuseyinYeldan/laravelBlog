@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //Relationship for user having many blogs
+    public function blogs(){
+        return $this->hasMany(Blog::class);
+    }
 }

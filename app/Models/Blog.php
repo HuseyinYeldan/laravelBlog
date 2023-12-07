@@ -17,8 +17,14 @@ class Blog extends Model
     protected $guarded = [];
     use HasFactory;
 
+    // Relationship for blog belonging to a category
     public function category(){
         return $this->belongsTo(Category::class);
+    }       
+
+    //Relationship for blogs and author connection
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
 }
