@@ -18,7 +18,6 @@
 }
 .content{
     max-width: 800px;
-    text-align: justify;
 }
 /* This targets what comes after the .content */
 .content + .content{
@@ -33,6 +32,7 @@
 .content p{
     line-height: 1.5;
     margin-bottom: 10px;
+    text-align: justify;
 }
 .content .blog-image{
     width:800px;
