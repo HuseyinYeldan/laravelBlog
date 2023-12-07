@@ -17,7 +17,7 @@
     margin-block: 100px;
 }
 .content{
-    max-width: 800px;
+    max-width: 700px;
 }
 /* This targets what comes after the .content */
 .content + .content{
