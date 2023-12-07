@@ -22,7 +22,7 @@
 }
 /* This targets what comes after the .content */
 .content + .content{
-    border-top: 1px solid #808080;
+    border-top: 1px solid rgb(200, 200, 200);
     margin-block: 50px;
     padding-block: 50px;
 }
@@ -35,6 +35,7 @@
     margin-bottom: 10px;
 }
 .content .blog-image{
+    width:800px;
     border-radius: 5px;
     margin-bottom: 15px;
 }

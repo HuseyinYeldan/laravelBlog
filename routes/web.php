@@ -1,9 +1,7 @@
 <?php
 
 use App\Models\Blog;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,29 +15,12 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 Route::get('/blogs', function () {
-
-    $files = File::files(resource_path("/blogs"));
-
-    $blogs = [];
-
-    foreach($files as $file){
-        $document = YamlFrontMatter::parseFile($file);
-        $blogs[] = new Blog(
-            $document->title,
-            $document->excerpt,
-            $document->date,
-            $document->body(),
-            $document->slug,
-            $document->image
-        );
-    }
-
-    return view('welcome',['blogs' =>$blogs]);
+    //return the files to view
+    return view('welcome',['blogs' => Blog::allBlogs()]);
 });
 
 // Route belirle ve slug ata.
 Route::get('/blog/{slug}', function($slug){
-
     return view('blog',[
         'blog' => Blog::find($slug)
     ]);
