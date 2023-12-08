@@ -15,6 +15,9 @@ class Blog extends Model
 
     //Genel olarak çoklu eklemeler yapılması doğru kabul edilmez o yüzden guarded'ın boş bırakıldığını görmek normal.
     protected $guarded = [];
+
+    protected $with = ['user','category'];
+    
     use HasFactory;
 
     // Relationship for blog belonging to a category

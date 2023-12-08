@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/blogs', function () {
     //return the files to view
     //Instead of just getting all the blogs we are getting with the category so we don't run the sql multiple times.
-    return view('welcome',['blogs' => Blog::latest()->with('category','user')->get()]);
+    return view('welcome',['blogs' => Blog::latest()->get()]);
 });
 
 // Route belirle ve slug ata.
@@ -27,13 +27,13 @@ Route::get('/blog/{blog:slug}', function(Blog $blog){
     return view('blog',[
         'blog' => $blog
     ]);
-
 });
 
+//add load to fix the n+1 problem.
 Route::get('/categories/{category:slug}',function(Category $category){
-    return view('welcome',['blogs' => $category->blogs->load('category','user')]);
+    return view('welcome',['blogs' => $category->blogs]);
 });
 
-Route::get('/user/{user}', function(User $user){
+Route::get('/user/{user:username}', function(User $user){
     return view('welcome', ['blogs' => $user->blogs]);
 });
