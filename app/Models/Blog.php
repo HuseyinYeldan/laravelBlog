@@ -20,6 +20,15 @@ class Blog extends Model
     
     use HasFactory;
 
+    public function scopeFilter($query, array $filters){
+        $query->when($filters['search']??false, function ($query, $search){
+            $query
+            ->where('title','like','%'.$search.'%')
+            ->orWhere('body','like','%'.$search.'%')
+            ->orWhere('excerpt','like','%'.$search.'%');
+        });
+    }
+
     // Relationship for blog belonging to a category
     public function category(){
         return $this->belongsTo(Category::class);

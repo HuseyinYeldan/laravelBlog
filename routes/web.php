@@ -3,6 +3,7 @@
 use App\Models\Blog;
 use App\Models\User;
 use App\Models\Category;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,21 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    //return the files to view
-    //Instead of just getting all the blogs we are getting with the category so we don't run the sql multiple times.
-    return view('welcome',[
-        'blogs' => Blog::latest()->get(), 
-        'categories'=> Category::all()
-    ]);
-});
+
+Route::get('/',[BlogController::class,'index']);
 
 // Route belirle ve slug ata.
-Route::get('/blog/{blog:slug}', function(Blog $blog){
-    return view('blog',[
-        'blog' => $blog
-    ]);
-});
+Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 
 //add load to fix the n+1 problem.
 Route::get('/categories/{category:slug}',function(Category $category){
