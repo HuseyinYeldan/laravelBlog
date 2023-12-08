@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/blogs', function () {
+Route::get('/', function () {
     //return the files to view
     //Instead of just getting all the blogs we are getting with the category so we don't run the sql multiple times.
     return view('welcome',['blogs' => Blog::latest()->get()]);
