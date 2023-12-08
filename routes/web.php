@@ -23,17 +23,8 @@ Route::get('/',[BlogController::class,'index']);
 // Route belirle ve slug ata.
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 
-//add load to fix the n+1 problem.
-Route::get('/categories/{category:slug}',function(Category $category){
-    return view('welcome',[
-        'blogs' => $category->blogs,
-        'currentCat' => $category->name,
-        'categories'=> Category::all()
-    ]);
-});
-
 Route::get('/user/{user:username}', function(User $user){
-    return view('welcome', [
+    return view('posts.index', [
         'blogs' => $user->blogs
     ]);
 });

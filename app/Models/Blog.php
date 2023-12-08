@@ -27,6 +27,10 @@ class Blog extends Model
             ->orWhere('body','like','%'.$search.'%')
             ->orWhere('excerpt','like','%'.$search.'%');
         });
+
+        $query->when($filters['category']??false, function ($query, $category){
+            $query->whereHas('category', fn ($query)=> $query->where('slug',$category));
+        });
     }
 
     // Relationship for blog belonging to a category

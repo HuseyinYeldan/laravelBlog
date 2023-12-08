@@ -12,14 +12,13 @@ class BlogController extends Controller
 
         //return the files to view
         //Instead of just getting all the blogs we are getting with the category so we don't run the sql multiple times.
-        return view('welcome',[
-            'blogs' => Blog::latest()->filter(request(['search']))->get(),
-            'categories'=> Category::all()
+        return view('posts.index',[
+            'blogs' => Blog::latest()->filter(request(['search','category']))->get(),
         ]);
     }
 
     public function show(Blog $blog){
-        return view('blog',[
+        return view('posts.show',[
             'blog' => $blog
         ]);
     }

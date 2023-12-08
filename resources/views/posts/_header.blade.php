@@ -13,21 +13,7 @@
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
         <!--  Category -->
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
-            <x-dropdown>
-                <x-slot name="trigger">
-                    <button
-                        class="flex-1 appearance-none bg-transparent py-2 pl-3 pr-9 w-32 text-sm font-semibold">{{ isset($currentCat) ? ucwords($currentCat) : 'Categories' }}
-                    </button>
-                </x-slot>
-
-                <x-dropdown-item href="/">All</x-dropdown-item>
-
-                @foreach ($categories as $category)
-                    <x-dropdown-item href="/categories/{{ $category->slug }}" :active="isset($currentCat) && $currentCat == $category->name">  
-                        {{ ucwords($category->name) }}
-                    </x-dropdown-item>
-                @endforeach
-            </x-dropdown>
+            <x-category-dropdown/>
         </div>
 
         <!-- Other Filters -->
