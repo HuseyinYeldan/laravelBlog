@@ -11,10 +11,10 @@
                     </p>
 
                     <div class="flex items-center lg:justify-center text-sm mt-4">
-                        <a href="/user/{{ $blog->user->username }}">
+                        <a href="/?user={{ $blog->user->username }}">
                             <img src="/images/lary-avatar.svg" alt="Lary avatar">
                         </a>
-                        <a href="/user/{{ $blog->user->username }}">
+                        <a href="/?user={{ $blog->user->username }}">
                             <div class="ml-3 text-left">
                                 <h5 class="font-bold">{{ $blog->user->name }}</h5>
                                 <h6>Mascot at Laracasts</h6>

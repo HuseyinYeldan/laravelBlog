@@ -22,9 +22,3 @@ Route::get('/',[BlogController::class,'index']);
 
 // Route belirle ve slug ata.
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
-
-Route::get('/user/{user:username}', function(User $user){
-    return view('posts.index', [
-        'blogs' => $user->blogs
-    ]);
-});
