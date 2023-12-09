@@ -39,3 +39,28 @@
     border-radius: 5px;
     margin-bottom: 15px;
 }
+.is-invalid {
+    border: 1px solid red;
+    background: rgba(255,0,0,0.05);
+}
+.animation-success-message{
+    transition: .5s;
+    animation: success-message-in 1s ease-in-out, success-message-out 1s 3.5s ease-in-out;                                                                          
+}
+
+@keyframes success-message-in {
+    0%{
+        right: -500px;
+    }
+    100%{
+        right: 2.5rem;
+    }
+}
+@keyframes success-message-out {
+    0%{
+        right: 2.5rem;
+    }
+    100%{
+        right: -500px;
+    }
+}
