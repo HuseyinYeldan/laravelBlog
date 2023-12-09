@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         //Creating fake datas
         User::factory(2)->create();
         Category::factory(2)->create();
-        Blog::factory(6)->create();
+        Blog::factory(20)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -7,7 +7,7 @@
         @if($blogs->isNotEmpty())
 
         <x-blog-grid :blogs="$blogs"/>
-
+        {{ $blogs->links() }}
         @else
         <p class="text-center">No blogs yet.</p>
         @endif
