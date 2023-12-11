@@ -26,7 +26,7 @@
                     <form action="/logout" method="POST" class="inline">
                         @csrf
                         @method('POST')
-                        <button type="submit" class="ml-4 px-3 py-1 rounded bg-red-400 text-white">Logout</button>
+                        <button type="submit" class="ml-4 px-3 py-1 rounded bg-red-400 ring-2 ring-red-200 text-sm font-semibold text-white">Logout</button>
                     </form>
                 @else
                     <a href="{{ route('register') }}" class="text-xs font-bold uppercase mx-4">Register</a>

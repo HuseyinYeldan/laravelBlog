@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
+            //This makes it so if the user gets deleted the comments gets deleted as well.
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->text('excerpt');
-            $table->text('image');
+            //Same for blogs if the blog gets deleted the comments get deleted.
+            $table->foreignId('blog_id')->constrained()->cascadeOnDelete();
             $table->text('body');
             $table->timestamps();
-            $table->timestamp('published_at')->nullable();
         });
     }
 
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('comments');
     }
 };

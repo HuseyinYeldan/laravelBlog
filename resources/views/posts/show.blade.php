@@ -49,10 +49,44 @@
                         {{ $blog->title }}
                     </h1>
 
-                    <div class="space-y-4 lg:text-lg leading-loose">
+                    <div class="space-y-4 lg:text-lg leading-loose mb-20">
                         <p>{{ $blog->body }}</p>
                     </div>
+                    @if(Auth::check())
+                    <hr>
+                    <section id="commentAdd" class="mt-4">
+                        <p>You are commenting as <strong>{{ Auth::user()->name }}</strong> 
+                            <form action="/logout" method="POST">@csrf <button type="submit" class="text-sm text-blue-400 font-semibold">Logout</button></form> 
+                        </p>
+                        
+                        <form action="/blog/{{ $blog->slug }}/comment" method="post"  class="mt-4">  
+                        @csrf
+                            <label for="" class="font-bold">Comment:</label>
+                            <textarea name="comment" id="comment" required minlength="4" maxlength="256" class="w-full border-2 mt-2 p-2 rounded border-black-500 @error('comment')is-invalid @enderror" cols="30" rows="5" placeholder="Comment...">{{ old('comment') }}</textarea>
+                            @error('comment')
+                                <p class="text-red-500 text-sm">{{ $message }}</p>
+                            @enderror
+                            <button type="submit" class="px-5 py-2 bg-blue-400 text-white font-bold rounded-full text-sm duration-300 hover:bg-blue-500">Comment</button>
+                        </form>
+
+                    </section>
+                    @endif
+
+                    <section id="comments" class="mt-10">
+                        <h3 class="font-bold mb-2 text-xl">Comments ({{ count($blog->comment) }}) </h3>
+                        <hr>
+                        @if(!isset($blog->comment[0]))
+                            <h3 class="mt-4 font-bold text-xl">No comments yet.</h3>
+                        @endif
+
+                        @foreach ($blog->comment->sortByDesc('created_at') as $comment)
+                            <x-comment :comment="$comment" />
+                        @endforeach
+                    </section>
                 </div>
+
+
+
             </article>
         </main>
 

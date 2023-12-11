@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class SessionsController extends Controller
 {
     public function destroy()
     {
         Auth::logout();
+        //For security invalidating the session can help session hijacks from hackers.
+        Session::invalidate();
         return redirect('/')->with('success', 'You are logged out.');
     }
     public function create()
@@ -26,10 +29,10 @@ class SessionsController extends Controller
         if (!Auth::attempt($credentials)) {
             return back()
                 ->withInput()
-                ->withErrors(['email' => 'Seems like the credentials are incorrect.']);
+                ->withErrors(['password' => 'Seems like the credentials are incorrect.']);
         }
         //Session fixation fix
-        session()->regenerate();
+        Session::regenerate();
         return redirect('/')->with('success', 'You are logged in!');
     }
 }
