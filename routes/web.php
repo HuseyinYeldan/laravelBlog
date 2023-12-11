@@ -23,6 +23,7 @@ Route::get('/',[BlogController::class,'index']);
 // Route belirle ve slug ata.
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 Route::post('/blog/{blog:slug}/comment', [CommentController::class,'store'])->name('comment.add');
+Route::post('/comment/{comment}/comment-delete', [CommentController::class,'destroy'])->name('comment.destroy');
 
 Route::get('/register',[RegisterController::class,'create'])->name('register')->middleware('guest');
 Route::post('/register',[RegisterController::class,'store']);

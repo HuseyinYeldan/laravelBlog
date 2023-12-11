@@ -70,4 +70,5 @@
         </footer>
     </section>
     <x-flash />
+    <x-flash-error />
 </body>
