@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
@@ -17,10 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/',[BlogController::class,'index']);
 
-// Route belirle ve slug ata.
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 Route::post('/blog/{blog:slug}/comment', [CommentController::class,'store'])->name('comment.add');
 Route::post('/comment/{comment}/comment-delete', [CommentController::class,'destroy'])->name('comment.destroy');
@@ -32,5 +31,8 @@ Route::post('/register',[RegisterController::class,'store']);
 Route::get('/login',[SessionsController::class,'create'])->name('login')->middleware('guest');
 Route::post('/login',[SessionsController::class,'store'])->middleware('guest');
 
-
 Route::post('/logout',[SessionsController::class, 'destroy'])->middleware('auth');
+
+
+//API CALLS
+Route::post('/newsletter', NewsletterController::class);
