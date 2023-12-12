@@ -11,11 +11,11 @@
         @if(Auth::check() && Auth::user()->id === $comment->user->id)
         <form action="/comment/{{ $comment->id }}/comment-delete" method="post" class="absolute right-0 top-0">
             @csrf
-            <button type="submit" class="px-3 py-1 mt-2 rounded bg-red-400 ring-2 ring-red-200 text-xs font-semibold text-white"><i class="fa-solid fa-trash"></i> </button>
+            <button type="submit" class="px-3 py-1 mt-2 rounded-full bg-red-400 ring-2 ring-red-200 text-xs font-semibold text-white"><i class="fa-solid fa-trash"></i> </button>
         </form>
         <form action="/comment/{{ $comment->id }}/comment-update" method="post" x-data="{ isVisible: false }">
             @csrf
-            <button type="button"  @click="isVisible = !isVisible" class="px-3 py-1 mt-2 rounded bg-blue-400 ring-2 ring-blue-200 text-xs font-semibold text-white absolute right-12 top-0"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button type="button"  @click="isVisible = !isVisible" class="px-3 py-1 mt-2 rounded-full bg-blue-400 ring-2 ring-blue-200 text-xs font-semibold text-white absolute right-12 top-0"><i class="fa-solid fa-pen-to-square"></i></button>
             <div x-show="isVisible">
                 <button type="submit"  class="px-3 py-1 mt-2 rounded bg-blue-400 ring-2 ring-blue-200 text-xs font-semibold text-white absolute right-2 bottom-4">Save</button>
                 <textarea xshow="isVisible" name="newComment" id="newComment" required minlength="4" maxlength="256" class="w-full border-2 mt-2 p-2 rounded border-black-500 @error('newComment')is-invalid @enderror" cols="30" rows="5" placeholder="Edit your comment...">{{ $comment->body }}</textarea>

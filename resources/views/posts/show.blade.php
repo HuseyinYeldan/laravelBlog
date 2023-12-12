@@ -70,6 +70,10 @@
                         </form>
 
                     </section>
+                    @else
+                    <section id="commentAdd" class="mt-4">
+                        <p class="text-center text-xl">Please <a href="/login" class="font-bold underline">log in</a> or <a href="/register" class="font-bold underline">register</a> to comment.</p>
+                    </section>
                     @endif
 
                     <section id="comments" class="mt-10">
