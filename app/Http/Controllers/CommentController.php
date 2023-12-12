@@ -29,7 +29,24 @@ class CommentController extends Controller
             return redirect()->back()->with('error', "You don't have the permisson to do that!");
         }
         Comment::destroy($comment->id);
-        return redirect()->back()->with('success', "Comment successfully delted.");
+        return redirect()->back()->with('success', "Comment successfully deleted.");
+    }
+
+    public function update(Comment $comment, Request $request){
+        if(Auth::user()->id !== $comment->user->id){
+
+            return redirect()->back()->with('error', "You don't have the permisson to do that!");
+        }
+        if($comment->body == $request->input('newComment')){
+            return redirect()->back()->with('error', "Comment is same as before!");
+        }
+
+        $request->validate([
+            'newComment' => 'required|max:256|min:4'
+        ]);
+
+        $comment->update(['body' => $request->input('newComment')]);
         
+        return redirect()->back()->with('success', "Comment successfully updated.");
     }
 }

@@ -24,6 +24,7 @@ Route::get('/',[BlogController::class,'index']);
 Route::get('/blog/{blog:slug}', [BlogController::class,'show']);
 Route::post('/blog/{blog:slug}/comment', [CommentController::class,'store'])->name('comment.add');
 Route::post('/comment/{comment}/comment-delete', [CommentController::class,'destroy'])->name('comment.destroy');
+Route::post('/comment/{comment}/comment-update', [CommentController::class,'update'])->name('comment.update');
 
 Route::get('/register',[RegisterController::class,'create'])->name('register')->middleware('guest');
 Route::post('/register',[RegisterController::class,'store']);
