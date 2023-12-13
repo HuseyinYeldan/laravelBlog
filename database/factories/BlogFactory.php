@@ -25,7 +25,7 @@ class BlogFactory extends Factory
             'excerpt' => $this->faker->paragraph(5,true),
             'body' => $this->faker->paragraph(30,true),
             'slug' => $this->faker->slug,
-            'image' => 'https://picsum.photos/800/300',
+            'image' => 'https://picsum.photos/seed/picsum/800/800',
 
         ];
     }
