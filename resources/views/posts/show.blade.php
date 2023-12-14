@@ -40,16 +40,20 @@
                             Back to Posts
                         </a>
 
+
                         <div class="space-x-2">
                             <x-category-button :category="$blog->category"/>
                         </div>
                     </div>
 
-                    <h1 class="font-bold text-3xl lg:text-4xl mb-10">
+                    @if(Auth::check() && Auth::user()->id == $blog->user->id)
+                        <a href="/admin/blog/{{ $blog->id }}/edit" class="px-3 py-1 rounded bg-yellow-400 ring-2 ring-yellow-300 text-sm font-semibold text-white">Edit <i class="fa-solid fa-pen ml-1"></i></a>
+                    @endif
+                    <h1 class="font-bold text-3xl lg:text-4xl mb-10 mt-2">
                         {{ $blog->title }}
                     </h1>
 
-                    <div class="space-y-4 lg:text-lg leading-loose mb-20">
+                    <div class="space-y-4 lg:text-lg leading-loose mb-20 break-all">
                         <p>{{ $blog->body }}</p>
                     </div>
                     @if(Auth::check())

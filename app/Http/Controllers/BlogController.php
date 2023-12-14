@@ -43,4 +43,10 @@ class BlogController extends Controller
         Blog::create($attributes);
         return redirect('/')->with('success', 'Your blog has been created.');
     }
+
+    public function edit(Blog $blog){
+        return view('posts.edit',[
+            'blog' => $blog
+        ]);
+    }
 }

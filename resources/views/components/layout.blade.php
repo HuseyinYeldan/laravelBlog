@@ -29,6 +29,7 @@
                         @method('POST')
                         <button type="submit" class="ml-4 px-3 py-1 rounded bg-red-400 ring-2 ring-red-200 text-sm font-semibold text-white">Logout <i class="fa-solid fa-right-from-bracket"></i> </button>
                     </form>
+                    <a href="/admin/blog/create" class="ml-4 px-3 py-1 rounded bg-green-400 ring-2 ring-green-300 text-sm font-semibold text-white">New Blog <i class="fa-solid fa-plus"></i></a>
                 @else
                     <a href="{{ route('register') }}" class="text-xs font-bold uppercase mx-4">Register</a>
                     <a href="{{ route('login') }}" class="text-xs font-bold uppercase mx-4">Login</a>

@@ -36,5 +36,8 @@ Route::post('/logout',[SessionsController::class, 'destroy'])->middleware('auth'
 Route::get('admin/blog/create', [BlogController::class, 'create'])->middleware('admin.check');
 Route::post('admin/blog', [BlogController::class, 'store'])->middleware('admin.check');
 
+Route::get('admin/blog/{blog}/edit', [BlogController::class, 'edit'])->middleware('admin.check');
+
+
 //API CALLS
 Route::post('/newsletter', NewsletterController::class);
